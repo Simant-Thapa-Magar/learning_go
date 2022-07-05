@@ -1,0 +1,12 @@
+<DOCTYPE !html>
+<html lang="en">
+<title>
+Predefined Template Functions
+</title>
+<body>
+{{range .}}
+{{.Name}} {{.Nation}}
+Status {{if and .FreeAgent .Affodable}} Affodable {{else}} N/A {{end}}
+{{end}}
+</body>
+</html>
