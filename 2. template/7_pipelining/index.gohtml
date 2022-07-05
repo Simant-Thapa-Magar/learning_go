@@ -1,0 +1,12 @@
+<DOCTYPE !html>
+<html lang="en">
+<title>
+Pipeline
+</title>
+<body>
+Original {{.}}
+Double {{ . | getDouble}}
+Square {{ . | getDouble | getSquare}}
+Squreroot {{ . | getDouble | getSquare | getSquareRoot}}
+</body>
+</html>
