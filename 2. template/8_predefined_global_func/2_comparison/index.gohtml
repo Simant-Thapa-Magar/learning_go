@@ -1,0 +1,21 @@
+<DOCTYPE !html>
+<html lang="en">
+<title>
+Predefined Functions
+</title>
+<body>
+{{range . }}
+{{ if gt .Score1 .Score2}}
+Score1 ({{.Score1}}) > Score2 ({{.Score2}})
+{{end}}
+
+{{ if eq .Score1 .Score2}}
+Score1 ({{.Score1}}) = Socre2 ({{.Score2}})
+{{end}}
+
+{{ if lt .Score1 .Score2}}
+Score1 ({{.Score1}}) < Score2 ({{.Score2}})
+{{end}}
+{{end}}
+</body>
+</html>
