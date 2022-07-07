@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>
+Understanding http Request
+</title>
+</head>
+<body>
+{{if .Method}}
+<h4>Method is {{.Method}}</h4>
+{{end}}
+
+{{if .Body}}
+{{range $key,$value := .Body}}
+<p><strong>{{$key}}</strong></p>
+<ul>
+{{range $value}}
+<li><em>{{.}}</em></li>
+{{end}}
+</ul>
+{{end}}
+{{end}}
+
+<form method="POST" action="/?name=get_data">
+<input name="name" type="text"/>
+<input type="submit" name="button" value="Click Me"/>
+</form>
+</body>
+</html>
