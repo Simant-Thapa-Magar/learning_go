@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Simple GO authentication</title>
+</head>
+<body>
+{{if .}}
+You are currently logged in.
+<br/>
+Click <a href="/profile">here</a> to visit your profile.<br/>
+Click <a href="/logout">here</a> to logout.
+{{else}}
+Please Signup/Login to continue. <br/>
+Click <a href="/signup">here</a> to signup.<br/>
+Click <a href="/login">here</a> to login.
+{{end}}
+</body>
+</html>
