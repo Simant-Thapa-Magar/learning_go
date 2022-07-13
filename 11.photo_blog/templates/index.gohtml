@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>
+Photo Blog
+</title>
+</head>
+<body>
+<h3>Upload Your Memories</h3>
+{{range .}}
+
+{{if .}}
+<img src="/public/images/{{.}}" alt={{.}} height="100px" width="auto"/>
+{{end}}
+
+{{end}}
+
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="new_post"/>
+<input type="submit" value="upload"/>
+</form>
+</body>
+</html>
