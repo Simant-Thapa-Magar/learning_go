@@ -1,0 +1,21 @@
+<html>
+<title>
+    Session Storage Demo
+</title>
+
+<body>
+    Hello, Welcome to session storage Demo
+    <script>
+        var language = sessionStorage.getItem("language");
+        alert("Language before set is " + language);
+        sessionStorage.setItem("language", "Golang");
+        language = sessionStorage.getItem("language");
+        alert("Language after set is " + language);
+        sessionStorage.removeItem("language");
+        language = sessionStorage.getItem("language");
+        alert("Language after removal is " + language);
+        sessionStorage.setItem("language", "Javascript");
+    </script>
+</body>
+
+</html>

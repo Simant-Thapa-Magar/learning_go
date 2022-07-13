@@ -1,0 +1,21 @@
+<html>
+<title>
+    Local Storage Demo
+</title>
+
+<body>
+    Hello, Welcome to local storage Demo
+    <script>
+        var language = localStorage.getItem("language");
+        alert("Language before set is " + language);
+        localStorage.setItem("language", "Golang");
+        language = localStorage.getItem("language");
+        alert("Language after set is " + language);
+        localStorage.removeItem("language");
+        language = localStorage.getItem("language");
+        alert("Language after removal is " + language);
+        localStorage.setItem("language", "Javascript");
+    </script>
+</body>
+
+</html>
