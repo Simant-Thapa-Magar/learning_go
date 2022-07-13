@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>
+        Hello World
+    </title>
+</head>
+
+<body>
+    <p>
+        Last Updated at : <span class="last_update">{{.}}</span>
+    </p>
+    <p>
+        <button id="updater">
+            Click here to update
+        </button>
+    </p>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', startNow)
+    function startNow() {
+        const elem = document.getElementById("updater")
+        elem.addEventListener("click", function () {
+            var xhr = new XMLHttpRequest()
+            xhr.open("GET", "/last-update", true)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                    document.querySelector(".last_update").innerHTML = xhr.responseText
+                }
+            }
+            xhr.send()
+        })
+    }
+</script>
+
+</html>
