@@ -18,11 +18,16 @@ func main() {
 	}
 
 	app.TemplateCache = tc
+	app.UseCache = true
 
 	renderer.NewTemplate(&app)
 
-	http.HandleFunc("/home", handlers.Home)
-	http.HandleFunc("/about", handlers.About)
+	repo := handlers.NewRepo(&app)
+
+	handlers.NewHandlers(repo)
+
+	http.HandleFunc("/home", handlers.Repo.Home)
+	http.HandleFunc("/about", handlers.Repo.About)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
