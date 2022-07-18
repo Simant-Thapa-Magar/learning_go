@@ -3,6 +3,7 @@ package renderer
 import (
 	"bytes"
 	"html/template"
+	"lets_try_layouts/pkg/config"
 	"log"
 	"net/http"
 	"path/filepath"
@@ -10,13 +11,14 @@ import (
 
 var functions = template.FuncMap{}
 
-func Render(w http.ResponseWriter, t string) {
-	templates, err := CreateTemplateCache()
+var app *config.AppConfig
 
-	if err != nil {
-		log.Fatal(err)
-	}
-	ft, ok := templates[t]
+func NewTemplate(a *config.AppConfig) {
+	app = a
+}
+
+func Render(w http.ResponseWriter, t string) {
+	ft, ok := app.TemplateCache[t]
 
 	if !ok {
 		log.Fatal("No template found")
