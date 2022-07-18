@@ -5,12 +5,13 @@ import (
 	"lets_try_layouts/pkg/handlers"
 	"net/http"
 
-	"github.com/bmizerany/pat"
+	"github.com/go-chi/chi"
 )
 
 func routes(a *config.AppConfig) http.Handler {
-	r := pat.New()
 
+	r := chi.NewRouter()
+	r.Use(PrintSth)
 	r.Get("/", http.HandlerFunc(handlers.Repo.Home))
 	r.Get("/about", http.HandlerFunc(handlers.Repo.About))
 
