@@ -26,8 +26,10 @@ func main() {
 
 	handlers.NewHandlers(repo)
 
-	http.HandleFunc("/home", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
+	srv := &http.Server{
+		Addr:    ":8080",
+		Handler: routes(&app),
+	}
+
+	_ = srv.ListenAndServe()
 }
