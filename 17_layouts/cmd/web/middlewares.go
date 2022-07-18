@@ -11,3 +11,7 @@ func PrintSth(next http.Handler) http.Handler {
 		next.ServeHTTP(w, req)
 	})
 }
+
+func LoadSession(next http.Handler) http.Handler {
+	return session.LoadAndSave(next)
+}

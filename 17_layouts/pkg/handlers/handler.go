@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"lets_try_layouts/pkg/config"
+	"lets_try_layouts/pkg/model"
 	"lets_try_layouts/pkg/renderer"
+
 	"net/http"
 )
 
@@ -23,9 +25,11 @@ func NewHandlers(r *Repository) {
 }
 
 func (r *Repository) Home(w http.ResponseWriter, req *http.Request) {
-	renderer.Render(w, "home.page.tml")
+	r.App.Session.Put(req.Context(), "remote_ip", req.RemoteAddr)
+	renderer.Render(w, "home.page.tml", &model.TemplateData{})
 }
 
-func (r *Repository) About(w http.ResponseWriter, reeq *http.Request) {
-	renderer.Render(w, "about.page.tml")
+func (r *Repository) About(w http.ResponseWriter, req *http.Request) {
+	remoteIp := r.App.Session.GetString(req.Context(), "remote_ip")
+	renderer.Render(w, "about.page.tml", &model.TemplateData{RemoteAddress: remoteIp})
 }

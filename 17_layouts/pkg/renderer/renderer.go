@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"html/template"
 	"lets_try_layouts/pkg/config"
+	"lets_try_layouts/pkg/model"
 	"log"
 	"net/http"
 	"path/filepath"
@@ -17,7 +18,7 @@ func NewTemplate(a *config.AppConfig) {
 	app = a
 }
 
-func Render(w http.ResponseWriter, t string) {
+func Render(w http.ResponseWriter, t string, d *model.TemplateData) {
 	var tc map[string]*template.Template
 	if app.UseCache {
 		tc = app.TemplateCache
@@ -36,7 +37,7 @@ func Render(w http.ResponseWriter, t string) {
 
 	buff := new(bytes.Buffer)
 
-	_ = ft.Execute(buff, nil)
+	_ = ft.Execute(buff, d)
 
 	buff.WriteTo(w)
 }

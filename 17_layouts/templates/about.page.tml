@@ -5,9 +5,11 @@
 <div class="col">
 Hi, I am about page
 <br/>
-I was added manually
-<br/>
-New content
+{{if .RemoteAddress}}
+Your IP address is {{.RemoteAddress}}
+{{else}}
+I don't know your IP address. Visit <a href="/">home</a> to know your address.
+{{end}}
 </div>
 </div>
 </div>
